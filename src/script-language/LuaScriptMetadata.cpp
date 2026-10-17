@@ -86,7 +86,7 @@ void LuaScriptMetadata::setup(const sol::table& t, const LuaScript* script) {
 
 					if (extends_script.is_null()) {
 						WARN_PRINT(String("Specified base class '%s' does not exist, using RefCounted") % Array::make(extends));
-					} else if (const Ref<LuaScript> lua_check; lua_check.is_null()) {
+					} else if (const Ref<LuaScript> lua_check{extends_script}; lua_check.is_null()) {
 						WARN_PRINT(String("Specified base class '%s' is not a lua script. Non lua scripts extension is not supported, using RefCounted") % Array::make(extends));
 					} else {
 						base_class = static_cast<Ref<Script>>(extends_script)->get_instance_base_type();
