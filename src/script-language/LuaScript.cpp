@@ -83,9 +83,15 @@ StringName LuaScript::_get_global_name() const {
 }
 
 bool LuaScript::_inherits_script(const Ref<Script>& script) const {
-	Ref<Script> current = script;
+	Ref<LuaScript> lua_check{script};
+	if (lua_check.is_null()) {
+		return false;
+	}
+
+	Ref<LuaScript> current{this};
+
 	while (current.is_valid()) {
-		if (current == metadata.base_script)
+		if (current == script)
 			return true;
 		current = current->get_base_script();
 	}

@@ -40,7 +40,7 @@ struct LuaScriptMetadata {
 	bool is_tool;
 	bool is_abstract;
 	StringName base_class;
-	Ref<Script> base_script;
+	Ref<LuaScript> base_script;
 	StringName class_name;
 	String icon_path;
 	Variant rpc_config;
